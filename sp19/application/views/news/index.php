@@ -1,9 +1,11 @@
 <?php
 //application/views/news/index.php
 
-$this->load->view($this->config->item('theme') . 'header');//assumes php, ie header.php
+$_POST['currentpage'] ='/sp19/news';
 
+$this->load->view($this->config->item('theme') . 'header');//assumes php, ie header.php
 ?>
+
 <h2><?php echo $title; ?></h2>
 
 <?php foreach ($news as $news_item): ?>

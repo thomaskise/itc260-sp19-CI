@@ -4,42 +4,59 @@ class News extends CI_Controller {
 
         public function __construct()
         {
-                parent::__construct();
-                $this->load->model('news_model');
-                $this->load->helper('url_helper');
+            parent::__construct();
+            $this->config->set_item('banner', 'News Section');
+            $this->load->model('news_model');
+            $this->load->helper('url_helper');
         }
 
         public function index()
         {
+            $this->config->set_item('title','Thoms News');
+            
+            //$nav1 = $this->config->item('nav1');
+            
 
-                        $data['news'] = $this->news_model->get_news();
-                        $data['title'] = 'News archive';
-                        $this->load->view('news/index', $data);
+            
+            $data['news'] = $this->news_model->get_news();
+            $data['title'] = 'News archive';
+            $this->load->view('news/index', $data);
 
                 
         }
 
         public function view($slug = NULL)
         {
-                $data['news_item'] = $this->news_model->get_news($slug);
-
-                if (empty($data['news_item']))
-                {
-                        show_404();
-                }
-
-                $data['title'] = $data['news_item']['title'];
-
-                $this->load->view('templates/header', $data);
-                $this->load->view('news/view', $data);
-                $this->load->view('templates/footer', $data);
+            
+            //slug without dashes
+            $dashless_slug = str_replace("-", " ", $slug);
+            
+            //upper case slug workds
+            $dashless_slug = ucwords($dashless_slug);
+            
+            //change to this once above is working
+            //$dashless_slug = ucwords(strtolower($dashless_slug));
+            
+            //Use dashless sug for title
+            $this->config->set_item('title', 'News Flash - ' . $dashless_slug);
+            
+            $data['news_item'] = $this->news_model->get_news($slug);
+            
+            if (empty($data['news_item']))
+            {
+                    show_404();
+            }
+            
+            $data['title'] = $data['news_item']['title'];
+            $this->load->view('news/view', $data);
         }
 
         public function create()
         {
             $this->load->helper('form');
             $this->load->library('form_validation');
-
+            //Configure the title tag
+            $this->config->set_item('title','Create News');
             $data['title'] = 'Create a news item';
 
             $this->form_validation->set_rules('title', 'Title', 'required');

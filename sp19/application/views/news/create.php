@@ -1,6 +1,7 @@
 <?php
 //application/views/news/create.php
 
+$_POST['currentpage'] ='/sp19/news/create';
 $this->load->view($this->config->item('theme') . 'header');
 ?>
 <h2><?php echo $title; ?></h2>
