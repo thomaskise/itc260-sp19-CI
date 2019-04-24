@@ -7,8 +7,9 @@ $config['title'] = 'Default Title';
 $config['copyright'] = 'Default Copyright';
 $config['masthead'] = 'Default MastHead';
 $config['theme'] = 'themes/bootswatch/';
-$_POST['currentpage'] ='';
+$_POST['currentpage'] ='';//Not needed on everypage, so initializing to avoid error
 
+//added /sp19/ to prevent adding extra news/ folder in url
 $config['nav1'] = array(
     '/sp19/news' => 'Read News',
     '/sp19/news/create' => 'Add News'

@@ -121,7 +121,7 @@ if(!function_exists('makeLinks'))
         foreach ($nav as $key => $value)
         
         {
-            if($key == $_POST['currentpage'])
+            if($key == $_POST['currentpage']) //currentpage is set on the page. make active if there is a match
             {
                 $myReturn .= '<li class="active"><a href="' . $key . '">' . $value . '</a></li>' . PHP_EOL; 
                 

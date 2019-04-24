@@ -1,6 +1,7 @@
 <?php
 //application/views/news/create.php
 
+//set currentpage for processing in makeLinks()
 $_POST['currentpage'] ='/sp19/news/create';
 $this->load->view($this->config->item('theme') . 'header');
 ?>

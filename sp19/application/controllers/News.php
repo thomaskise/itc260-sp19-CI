@@ -16,28 +16,20 @@ class News extends CI_Controller {
             
             //$nav1 = $this->config->item('nav1');
             
-
-            
             $data['news'] = $this->news_model->get_news();
             $data['title'] = 'News archive';
             $this->load->view('news/index', $data);
-
-                
         }
 
         public function view($slug = NULL)
         {
-            
             //slug without dashes
             $dashless_slug = str_replace("-", " ", $slug);
             
             //upper case slug workds
             $dashless_slug = ucwords($dashless_slug);
             
-            //change to this once above is working
-            //$dashless_slug = ucwords(strtolower($dashless_slug));
-            
-            //Use dashless sug for title
+            //Use dashless slug for title
             $this->config->set_item('title', 'News Flash - ' . $dashless_slug);
             
             $data['news_item'] = $this->news_model->get_news($slug);
@@ -64,10 +56,7 @@ class News extends CI_Controller {
 
             if ($this->form_validation->run() === FALSE)
             {
-
                 $this->load->view('news/create', $data);
-
-
             }
             else
             {
