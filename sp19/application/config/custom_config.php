@@ -11,6 +11,6 @@ $_POST['currentpage'] ='';//Not needed on everypage, so initializing to avoid er
 
 //added /sp19/ to prevent adding extra news/ folder in url
 $config['nav1'] = array(
-    '/sp19/news' => 'Read News',
-    '/sp19/news/create' => 'Add News'
+    'news' => 'Read News',
+    'news/create' => 'Add News'
 );
