@@ -123,10 +123,10 @@ if(!function_exists('makeLinks'))
         {
             if($key == $_POST['currentpage']) //currentpage is set on the page. make active if there is a match
             {
-                $myReturn .= '<li class="active"><a href="' . $key . '">' . $value . '</a></li>' . PHP_EOL; 
+                $myReturn .= '<li class="active"><a href="' . site_url($key) . '">' . $value . '</a></li>' . PHP_EOL; 
                 
             } else {
-                $myReturn .= '<li><a href="' . $key . '">' . $value . '</a></li>' . PHP_EOL; 
+                $myReturn .= '<li><a href="' . site_url($key) . '">' . $value . '</a></li>' . PHP_EOL; 
             }
         }
         return $myReturn;

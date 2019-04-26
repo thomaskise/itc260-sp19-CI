@@ -2,7 +2,7 @@
 //application/views/news/create.php
 
 //set currentpage for processing in makeLinks()
-$_POST['currentpage'] ='/sp19/news/create';
+$_POST['currentpage'] ='news/create';
 $this->load->view($this->config->item('theme') . 'header');
 ?>
 <h2><?php echo $title; ?></h2>
