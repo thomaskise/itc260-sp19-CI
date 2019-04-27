@@ -115,13 +115,13 @@ if(!function_exists('bootswatchFeedback'))
 
 if(!function_exists('makeLinks'))
 {
-    function makeLinks($nav)
+    function makeLinks($nav, $match)
     {
         $myReturn = '';
         foreach ($nav as $key => $value)
         
         {
-            if($key == $_POST['currentpage']) //currentpage is set on the page. make active if there is a match
+            if($key == $match) //currentpage is set on the page. make active if there is a match
             {
                 $myReturn .= '<li class="active"><a href="' . site_url($key) . '">' . $value . '</a></li>' . PHP_EOL; 
                 
