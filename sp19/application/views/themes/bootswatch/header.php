@@ -24,7 +24,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
-              <?=makeLinks($this->config->item('nav1'))?>
+              <?=makeLinks($this->config->item('nav1'), $this->config->item('navkey'))?>
           </ul>
         </div>
       </div>
