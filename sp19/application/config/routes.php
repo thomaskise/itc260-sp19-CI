@@ -54,6 +54,10 @@ $route['news/create'] = 'news/create';
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
 
+
+//routes for our pictures model
+$route['pictures'] = 'pictures';
+
 //default routes
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

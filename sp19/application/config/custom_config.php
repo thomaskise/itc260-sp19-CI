@@ -8,9 +8,11 @@ $config['copyright'] = 'Default Copyright';
 $config['masthead'] = 'Default MastHead';
 $config['theme'] = 'themes/bootswatch/';
 $config['navkey'] = '';
+$config['flickrkey'] = 'ae95e4a5908ae0b0f21fc34fcc690a16';
 
-//set-up for makeLinks()
+//added /sp19/ to prevent adding extra news/ folder in url
 $config['nav1'] = array(
     'news' => 'Read News',
-    'news/create' => 'Add News'
+    'news/create' => 'Add News',
+    'pictures' => 'Pictures'
 );
