@@ -134,3 +134,25 @@ if(!function_exists('makeLinks'))
     }
 }//end makeLinks
 
+if(!function_exists('makeDropdown'))
+{
+//    function makeDropdown($option)
+    function makeDropdown($option, $match)
+    {
+        $myReturn = '';
+        foreach ($option as $key => $value)
+        
+        {
+            if($key == $match) 
+            {
+                $myReturn .= '<option value="' . $key . '" selected>' . $value . '</option>' . PHP_EOL; 
+                
+            } else {
+                $myReturn .= '<option value="' . $key . '">' . $value . '</option>' . PHP_EOL; 
+            }
+        }
+        return $myReturn;
+            
+    }
+}//end makeDropdown
+
