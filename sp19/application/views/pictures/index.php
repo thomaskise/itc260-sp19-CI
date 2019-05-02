@@ -1,5 +1,5 @@
 <?php
-    //application/views/news/index.php
+    //application/views/pictures/index.php
 
     $this->load->view($this->config->item('theme') . 'header');//assumes php, ie header.php
     
@@ -12,19 +12,23 @@
             die;
         */
     
-    echo '
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <button type="button" class="btn btn-info">Select Topic</button>
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                    <a class="dropdown-item" href="#">Dropdown link</a>
-                </div>
-            </div>
-        </div>
-        ';
+    if(!empty($this->config->item('searchfilter'))){ 
+       // var_dump($this->config->item("searchfilter"));
+    //    die;
+    }else{
+        echo '
+            <p>Current picture topic: ' . ucfirst($this->session->userdata("sessionfilter")) . '</p>
+            <form method="get" action="' . site_url("pictures/set_filter") . '">
+                <select name="filter">' .
 
+                    makeDropdown($this->config->item("dropdown1"), 
+                        $this->session->userdata("sessionfilter")) .                            
+    //                    $data['tags'] .   
+                '</select>
+                <input type="submit" value="Select Picture Topic" class="button warning" />
+            </form>'
+        ;
+    }
     echo '<hr/>';
 
     echo '
@@ -39,6 +43,7 @@
         <tbody>';
             foreach($pictures as $pic)
             {
+                $slug = $pic->id;
                 $size = 'm';
                 $photo_url = '
                 http://farm'. $pic->farm . '.staticflickr.com/' . $pic->server . '/' . $pic->id . '_' . $pic->secret . '_' . $size . '.jpg';
@@ -49,7 +54,9 @@
                     <td>
                         <img title='" . $pic->title . "' src='" . $photo_url . "' /><br />
                     </td>
-                    <td>" . $pic->title . "</td>
+                    <td>
+                        <a href='" . site_url('pictures/' . $slug) . "'>" . $pic->title . "</a>
+                    </td>
                 </tr>
                 ";
             }
@@ -59,3 +66,5 @@
 
     $this->load->view($this->config->item('theme') . 'footer');
 ?>
+
+
