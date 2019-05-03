@@ -56,7 +56,17 @@ $route['news'] = 'news';
 
 
 //routes for our pictures model
+//$route['pictures/set_filter?filter=ceramics'] = 'pictures';
+//$route['pictures/index'] = 'pictures';
+$route['pictures/(:num)'] = 'pictures/view/$1';
+//$route['pictures/set_filter?(:any)'] = 'pictures';
 $route['pictures'] = 'pictures';
+
+//routes for our pics model
+$route['pics/(:num)'] = 'pics/view/$1';
+//$route['pictures/set_filter?(:any)'] = 'pictures';
+$route['pics'] = 'pics';
+
 
 //default routes
 $route['default_controller'] = 'welcome';
