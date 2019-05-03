@@ -6,7 +6,7 @@
     echo '
         <h2>' . $title . '</h2>
         <h3>Select one of our topics: </h3>
-        <form method="post" action="' . site_url("pics/view") . '">
+        <form method="post" action="' . site_url("pics/view") .  '">
             <div class="form-group">
                 <select class="custom-select" name="filter">' .
                     makeDropdown($this->config->item("dropdown1"), 
