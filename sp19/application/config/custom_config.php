@@ -15,7 +15,7 @@ $config['flickrkey'] = 'ae95e4a5908ae0b0f21fc34fcc690a16';
 $config['nav1'] = array(
     'news' => 'Read News',
     'news/create' => 'Add News',
-    'pictures' => 'Pictures'
+    'pics' => 'Pics'
 );
 
 // dropdown selection
