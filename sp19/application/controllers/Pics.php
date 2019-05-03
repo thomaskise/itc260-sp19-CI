@@ -20,7 +20,11 @@ class Pics extends CI_Controller {
     
         public function view($slug = NULL)
         {
-        
+            $slug= $this->input->post('filter');
+            
+            //set value of search filter in session to use later for persisting in dropdown
+            $this->session->set_userdata('sessionfilter', $slug);
+
             //slug without dashes
             $dashless_slug = str_replace("-", " ", $slug);
             
@@ -30,11 +34,8 @@ class Pics extends CI_Controller {
             //Use dashless slug for page tab title
             $this->config->set_item('title', 'Images - ' . $dashless_slug);
             
-            $this->config->set_item('searchfilter', $this->input->post('filter'));
-            //set value of search filter in session to use later for persisting in dropdown
-            $this->session->set_userdata('sessionfilter', $this->config->item('searchfilter'));
-            $data['pics'] = $this->Pics_model->get_pics($this->config->item('searchfilter'));
-            $data['title'] = 'Picture Topic: ' . strtoupper($this->config->item('searchfilter'));
+            $data['pics'] = $this->Pics_model->get_pics($slug);
+            $data['title'] = 'Picture Topic: ' . strtoupper($slug);
             $this->load->view('pics/view', $data);
         }
 
