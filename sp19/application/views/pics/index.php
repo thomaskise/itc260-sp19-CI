@@ -6,10 +6,11 @@
     echo '
         <h2>' . $title . '</h2>
         <h3>Select one of our topics: </h3>
-        <form method="post" action="' . site_url("pics/view") .  '">
+        <form method="post" action="' . site_url("pics/set_slug") .  '">
             <div class="form-group">
                 <select class="custom-select" name="filter">' .
                     makeDropdown($this->config->item("dropdown1"), 
+                        //sessionfilter sets active page
                         $this->session->userdata('sessionfilter')) .  '                       
                 </select>
             </div>
@@ -19,7 +20,7 @@
 
         <h3>Or enter a topic of your own: </h3>
         <div class="form-group">
-            <form method="post" action="' . site_url("pics/view") . '">
+            <form method="post" action="' . site_url("pics/set_slug") . '">
                 <input name="filter" type="text" class="form-control form-control-sm"  placeholder="Enter a picture topic" required/>
                 <input type="submit"  value="Submit Your Topic" id="tagname" class="btn btn-primary btn-sm" />
             </form>

@@ -8,23 +8,29 @@ class Pics extends CI_Controller {
             $this->load->helper('url_helper');
         }
     
+        public function set_slug()
+        {
+            //get the slug from the form input
+            $slug = $this->input->post('filter');
+            $slug = str_replace(" ", "-", $slug);            
+            
+            //set value of search filter in session to use later for persisting in dropdown
+            $this->session->set_userdata('sessionfilter', $slug);
+
+            //
+            redirect('pics/view/' . $slug);            
+        }
+    
         public function index()
         {   
-            $this->load->helper('form');
-            $this->load->library('form_validation');
-            $this->config->set_item('title','Pics');
-            $this->config->set_item('navkey','pics');
-            $data['title'] = 'Picture Topics';
+            $this->config->set_item('navkey','pics');//used to match active nav
+            $this->config->set_item('title','Pics');//browser tab title
+            $data['title'] = 'Picture Topics';// page title
             $this->load->view('pics/index', $data);
         }
     
         public function view($slug = NULL)
         {
-            $slug= $this->input->post('filter');
-            
-            //set value of search filter in session to use later for persisting in dropdown
-            $this->session->set_userdata('sessionfilter', $slug);
-
             //slug without dashes
             $dashless_slug = str_replace("-", " ", $slug);
             
@@ -35,7 +41,7 @@ class Pics extends CI_Controller {
             $this->config->set_item('title', 'Images - ' . $dashless_slug);
             
             $data['pics'] = $this->Pics_model->get_pics($slug);
-            $data['title'] = 'Picture Topic: ' . strtoupper($slug);
+            $data['title'] = 'Picture Topic: ' . strtoupper($dashless_slug);
             $this->load->view('pics/view', $data);
         }
 
